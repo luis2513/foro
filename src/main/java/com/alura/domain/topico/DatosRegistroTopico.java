@@ -7,7 +7,7 @@ public record DatosRegistroTopico(
         String titulo,
         @NotBlank
         String mensaje,
-        StatusTopico status,
+        Status status,
         @NotBlank
         String fecha,
         @NotBlank

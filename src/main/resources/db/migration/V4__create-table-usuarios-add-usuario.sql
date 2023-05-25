@@ -1,0 +1,1 @@
+insert into usuarios values(1, 'eduardo','waltri@alura.com', '$2y$10$4IWzpb/D12enA.gRUE0A0OQtwcs7ccMXUhWPrOWpRIVCjn6khuWy2');

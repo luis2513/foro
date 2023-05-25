@@ -1,6 +1,7 @@
 package com.alura.modelo;
 
 import com.alura.domain.topico.Topico;
+import com.alura.domain.usuarios.Usuario;
 
 public class Respuesta {
 

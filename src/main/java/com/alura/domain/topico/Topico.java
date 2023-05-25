@@ -24,13 +24,13 @@ public class Topico {
 	private String titulo;
 
 	private String mensaje;
-
-	private StatusTopico status;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	private String fecha;
 
 	private String author;
-
+	@Enumerated(EnumType.STRING)
 	private Curso curso;
 
 	private Boolean activo;

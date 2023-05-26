@@ -30,7 +30,7 @@ public class TopicoController {
         Topico topico = topicoRepository.save(new Topico(datosRegistroTopico));
         DatosRespuestaTopico datosRespuestaTopico = new DatosRespuestaTopico(topico.getId(),
                 topico.getTitulo(), topico.getMensaje(),
-                topico.getStatus(), topico.getFecha(), topico.getAuthor(),topico.getCurso());
+                topico.getStatus(), topico.getFecha(), topico.getAuthor(), topico.getCurso());
         URI url = uriComponentsBuilder.path("/topicos/{id}").buildAndExpand(topico.getId()).toUri();
         return ResponseEntity.created(url).body(datosRespuestaTopico);
 
@@ -47,7 +47,7 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(datosActualizarTopicos.id());
         topico.actualizarDatos(datosActualizarTopicos);
         return ResponseEntity.ok(new DatosRespuestaTopico(topico.getId(), topico.getTitulo(), topico.getMensaje(),
-                topico.getStatus(), topico.getFecha(), topico.getAuthor(),topico.getCurso()));
+                topico.getStatus(), topico.getFecha(), topico.getAuthor(), topico.getCurso()));
 
     }
     @DeleteMapping("/{id}")
@@ -62,7 +62,7 @@ public class TopicoController {
         Topico topico = topicoRepository.getReferenceById(id);
         var datosTopicos = new DatosRespuestaTopico(topico.getId(),
                 topico.getTitulo(), topico.getMensaje(),
-                topico.getStatus(), topico.getFecha(), topico.getAuthor(),topico.getCurso());
+                topico.getStatus(), topico.getFecha(), topico.getAuthor(), topico.getCurso());
         return ResponseEntity.ok(datosTopicos);
     }
 

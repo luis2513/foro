@@ -1,7 +1,6 @@
 package com.alura.modelo;
 
 import com.alura.domain.topico.Topico;
-import com.alura.domain.usuarios.Usuario;
 
 public class Respuesta {
 
@@ -9,7 +8,7 @@ public class Respuesta {
 	private String mensaje;
 	private Topico topico;
 	private String fechaCreacion;
-	private Usuario autor;
+	private com.alura.domain.usuarios.Usuario autor;
 	private Boolean solucion = false;
 
 	@Override
@@ -69,11 +68,11 @@ public class Respuesta {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Usuario getAutor() {
+	public com.alura.domain.usuarios.Usuario getAutor() {
 		return autor;
 	}
 
-	public void setAutor(Usuario autor) {
+	public void setAutor(com.alura.domain.usuarios.Usuario autor) {
 		this.autor = autor;
 	}
 

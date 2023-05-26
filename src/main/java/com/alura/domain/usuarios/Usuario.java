@@ -1,6 +1,7 @@
 package com.alura.domain.usuarios;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,6 +28,7 @@ public class Usuario implements UserDetails {
 	@NotBlank
 	private String nombre;
 	@NotBlank
+	@Email
 	private String email;
 	@NotBlank
 	private String contrasena;

@@ -1,8 +1,7 @@
 package com.alura.domain.usuarios;
 
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,25 +19,30 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "Id")
 public class Usuario implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@NotBlank
+	private Long Id;
 	private String nombre;
-	@NotBlank
-	@Email
 	private String email;
-	@NotBlank
 	private String contrasena;
+
+	private Boolean activado;
+
+	public Usuario(DatosRegistroUsuario datosRegistroUsuario) {
+		this.activado = true;
+		this.nombre = datosRegistroUsuario.nombre();
+		this.email = datosRegistroUsuario.email();
+		this.contrasena = datosRegistroUsuario.contrasena();
+	}
 
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
 		return result;
 	}
 
@@ -51,20 +55,20 @@ public class Usuario implements UserDetails {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (Id == null) {
+			if (other.Id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!Id.equals(other.Id))
 			return false;
 		return true;
 	}
 
 	public Long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.Id = id;
 	}
 
 	public String getNombre() {
@@ -89,6 +93,23 @@ public class Usuario implements UserDetails {
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public void actualizarDatoss(DatosActualizarUsuarios datosActualizarUsuarios) {
+		if (datosActualizarUsuarios.nombre() != null){
+			this.nombre = datosActualizarUsuarios.nombre();
+		}
+		if (datosActualizarUsuarios.email() != null) {
+			this.email = datosActualizarUsuarios.email();
+		}
+		if (datosActualizarUsuarios.contrasena() != null) {
+			this.contrasena = datosActualizarUsuarios.contrasena();
+		}
+
+	}
+
+	public void desactivarUsuario() {
+		this.activado = false;
 	}
 
 	@Override
